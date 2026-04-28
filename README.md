@@ -1,66 +1,132 @@
-# AutoCapture Selfie using Python
+# 📸 Smile Selfie — Detecção de Sorriso com Python e OpenCV
 
-This Python project allows you to automatically capture selfies using a webcam or mobile camera connected via **DroidCam**. It's a simple, fun way to test OpenCV and Python capabilities for image capturing.
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white)
+![OpenCV](https://img.shields.io/badge/OpenCV-4.x-green?logo=opencv&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
-![AutoCapture Selfie](captured_image.jpg)
+ o programa detecta **rostos e sorrisos em tempo real** via câmera do celular (DroidCam ou Iriun Webcam) e só tira a foto quando você **está sorrindo e pressiona `C`** — sem fotos indesejadas!
 
-## Features
+---
 
-- Automatically captures selfies
-- Supports webcam and mobile cameras via DroidCam
-- Simple code setup with customizable selfie conditions
+## Como funciona
 
-## Installation
+```
+[Câmera do Celular]  →  [OpenCV: Haar Cascade]  →  [Detecta rosto + sorriso]
+                                                          ↓
+                                               Pressione C para capturar
+                                                          ↓
+                                         📁 sorriso_20250428_153045.jpg
+```
 
-### 1. Clone the repository
+---
 
-Run the following command to clone the repository to your local machine:
+## Funcionalidades
+
+| Recurso | Detalhe |
+
+|  Câmera via USB ou Wi-Fi | Compatível com DroidCam e Iriun Webcam |
+| Detecção de rosto | Retângulo azul ao redor do rosto |
+| Detecção de sorriso | Retângulo verde dentro da região do rosto |
+|  Feedback visual | Mensagem na tela indicando se o sorriso está ativo |
+|  Captura inteligente | Foto só é tirada ao sorrir **+** pressionar `C` |
+|  Arquivo salvo com timestamp: `sorriso_YYYYMMDD_HHMMSS.jpg` 
+|   Pressione `Q` para encerrar a qualquer momento 
+
+---
+
+## Estrutura do Projeto
+
+```
+smile-selfie/
+├── smile_selfie.py       # Script principal
+├── requirements.txt      # Dependências
+├── README.md
+└── fotos/                # Pasta criada automaticamente para as selfies
+```
+
+
+### Aplicativos de câmera para celular (opcional)
+
+| App | Conexão | Link |
+|---|---|---|
+| [DroidCam](https://www.dev47apps.com/) | USB ou Wi-Fi | Android / iOS |
+| [Iriun Webcam](https://iriun.com/) | USB ou Wi-Fi | Android / iOS |
+
+---
+
+## Instalação
+
+### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/danishkurukkoli/autocapture-selfie-python.git
-cd autocapture-selfie-python
+git clone https://github.com/seu-usuario/smile-selfie.git
+cd smile-selfie
 ```
 
-### 2. Install dependencies
-
-Make sure you have Python installed. Then, install the required packages:
+### 2. (Recomendado) Crie um ambiente virtual
 
 ```bash
-pip install opencv-python
+python -m venv venv
+
+# Windows
+venv\Scripts\activate
+
+# Linux / macOS
+source venv/bin/activate
 ```
-Usage
-1. Using your webcam
-To use the default webcam on your computer, run:
+
+### 3. Instale as dependências
 
 ```bash
-
-python main.py
+pip install -r requirements.txt
 ```
-### 2. Using your mobile camera with DroidCam
-If you prefer to use your mobile phone camera instead of the default webcam, you can do so using DroidCam.
 
-Step 1: Download and install the [DroidCam App](https://www.dev47apps.com/droidcam/) on your phone.
+> **`requirements.txt`**
+> ```
+> opencv-python
+> numpy
+> ```
 
-Step 2: Download and install the [DroidCam client](https://www.dev47apps.com/droidcam/windows/) on your PC.
+---
 
-Step 3: Connect your mobile phone to your computer using Wi-Fi or USB via the DroidCam app.
+## Como usar
 
-Step 4: Open the autocapture.py file in your text editor and change the following line in the code:
-
-From:
-
-``` bash 
-cap = cv2.VideoCapture(0)  # For default webcam
-```
-To:
-
-``` bash
-cap = cv2.VideoCapture(1)  # For DroidCam (or change to the correct ID if different)
-```
-### Step 5: Run the program again:
+### Execute o script
 
 ```bash
-
-python autocapture.py
+python smile_selfie.py
 ```
-Now, the video input will be coming from your mobile phone's camera via DroidCam.
+
+### Controles
+
+| Tecla | Ação |
+|---|---|
+| `C` | 📸 Captura a foto *(somente se sorrindo)* |
+| `Q` | ❌ Encerra o programa |
+
+
+
+## Onde as fotos são salvas?
+
+As fotos são salvas automaticamente na pasta do script com o formato:
+
+```
+sorriso_20250428_153045.jpg
+```
+
+---
+
+## Tecnologias utilizadas
+
+- [Python 3](https://www.python.org/)
+- [OpenCV](https://opencv.org/) — visão computacional e classificadores Haar Cascade
+- [NumPy](https://numpy.org/) — processamento de arrays de imagem
+- [DroidCam](https://www.dev47apps.com/) / [Iriun Webcam](https://iriun.com/) — câmera via celular
+
+---
+
+
+
+
+
+> Feito com 😄 e Python
